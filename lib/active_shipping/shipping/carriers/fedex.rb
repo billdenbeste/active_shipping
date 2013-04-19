@@ -156,7 +156,9 @@ module ActiveMerchant
       def build_rate_request(origin, destination, packages, options={})
         imperial = ['US','LR','MM'].include?(origin.country_code(:alpha2))
 
-        xml_request = XmlNode.new('RateRequest', 'xmlns' => 'http://fedex.com/ws/rate/v6') do |root_node|
+#       xml_request = XmlNode.new('RateRequest', 'xmlns' => 'http://fedex.com/ws/rate/v6') do |root_node|
+        xml_request = XmlNode.new('RateRequest', 'xmlns' => 'http://ws.fedex.com:443/web-services') do |root_node|
+
           root_node << build_request_header
 
           # Version
